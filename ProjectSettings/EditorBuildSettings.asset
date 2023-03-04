@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Move.unity
+    guid: c26fc54b6b3aa134ea5fc1ca87728749
+  - enabled: 1
+    path: Assets/Scenes/Place.unity
+    guid: 26f54f691b6796d4d9a060139d4aa946
+  - enabled: 1
+    path: Assets/Scenes/Turn-Based Combat.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

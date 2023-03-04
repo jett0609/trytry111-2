@@ -905,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1575733903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textTalk: {fileID: 1670689060}
-  buttonTalk: {fileID: 0}
+  buttonTalk: {fileID: 1575733904}
+  talk: "\u6230\u9B25\u958B\u59CB\u3002"
+  gameObjectTalk: {fileID: 1575733902}
 --- !u!1 &1989500633
 GameObject:
   m_ObjectHideFlags: 0
