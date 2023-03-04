@@ -8,6 +8,10 @@ public class PlayerControl : MonoBehaviour
     public GameObject player;
     CharacterController controller;
     public float speed = 10;
+    float time = 0;
+    public float randomMax, randomMin;
+    public string Place;
+    public string Aide;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -20,13 +24,24 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 dir = new Vector3(h, 0, v);
 
-        //旋轉
+        // 如果有移動
         if (dir.magnitude > 0.1f)
         {
+            // 旋轉
             float faceAngle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
             player.transform.rotation = Quaternion.Euler(0, faceAngle, 0);
             //Quaternion targetRotation = Quaternion.Euler(0, faceAngle, 0);
             //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.3f);
+
+            // 計時
+            time += Time.deltaTime;
+            float randomTime = Random.Range(randomMin, randomMax);
+            if (time > randomTime)
+            {
+                // 遇見怪物
+                SceneManager.LoadScene(Aide);
+                time = 0;
+            }
         }
 
         // 移動 (x,z)
@@ -34,10 +49,9 @@ public class PlayerControl : MonoBehaviour
         controller.Move(move);
     }
 
-    public string Place;
     //private void OnCollisionEnter(Collision collision)
     //{
-    //    //如果撞到地方就更改關卡
+    //    // 如果撞到地方就更改關卡
     //    if (collision.gameObject.tag == "Place")
     //    {
     //        SceneManager.LoadScene(Place);
@@ -45,10 +59,16 @@ public class PlayerControl : MonoBehaviour
     //}
     private void OnTriggerEnter(Collider other)
     {
-        //如果撞到地方就更改關卡
+        // 如果撞到地方就更改關卡
         if (other.gameObject.tag == "Place")
         {
             SceneManager.LoadScene(Place);
         }
+
+        //    // 如果撞到敵人就更改關卡
+        //    if (other.gameObject.tag == "Aide")
+        //    {
+        //        SceneManager.LoadScene(Aide);
+        //    }
     }
 }
