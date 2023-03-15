@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour
     public string Place;
     public string Aide;
     bool StoreBool = false;
+    //bool PickUpBool = false;
     int e = 0;
     void Start()
     {
@@ -97,6 +98,11 @@ public class PlayerControl : MonoBehaviour
             StoreBool= true;
         }
 
+        //if (other.gameObject.tag=="PickUp")
+        //{
+        //    PickUpBool= true;
+        //}
+
         //    // 如果撞到敵人就更改關卡
         //    if (other.gameObject.tag == "Aide")
         //    {
@@ -147,5 +153,10 @@ public class PlayerControl : MonoBehaviour
         {
             StoreBool = false;
         }
+
+        //if (other.gameObject.tag == "PickUp")
+        //{
+        //    PickUpBool = false;
+        //}
     }
 }
