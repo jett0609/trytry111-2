@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Place
   - Aide
+  - Place
+  - Store
   layers:
   - Default
   - TransparentFX
