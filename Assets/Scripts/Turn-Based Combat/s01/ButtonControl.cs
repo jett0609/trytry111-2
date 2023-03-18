@@ -8,7 +8,7 @@ public class ButtonControl : MonoBehaviour
     //public GameObject button;
     public GameObject talk;
     public Text textTalk;
-    public string aTalk;
+    public string[] aTalk;
     public Button yourButton;
 
     void Start()
@@ -20,7 +20,7 @@ public class ButtonControl : MonoBehaviour
     public void Mousedownone()
     {
         talk.SetActive(true);
-        textTalk.text = aTalk;
+        textTalk.text = aTalk[0];
     }
 }
 

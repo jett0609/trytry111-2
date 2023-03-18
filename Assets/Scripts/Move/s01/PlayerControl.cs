@@ -13,9 +13,8 @@ public class PlayerControl : MonoBehaviour
     public float randomMax, randomMin;
     public string Place;
     public string Aide;
-    bool StoreBool = false;
     //bool PickUpBool = false;
-    int e = 0;
+    float h, v;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -23,8 +22,8 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
 
         Vector3 dir = new Vector3(h, 0, v);
 
@@ -32,48 +31,40 @@ public class PlayerControl : MonoBehaviour
         if (dir.magnitude > 0.1f)
         {
             // 旋轉
-            float faceAngle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
-            player.transform.rotation = Quaternion.Euler(0, faceAngle, 0);
-            //Quaternion targetRotation = Quaternion.Euler(0, faceAngle, 0);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.3f);
+            PlayerRotate();
 
-            // 計時
-            time += Time.deltaTime;
-            float randomTime = Random.Range(randomMin, randomMax);
-            if (time > randomTime)
-            {
-                // 遇見怪物
-                SceneManager.LoadScene(Aide);
-                time = 0;
-            }
+            // 遇怪
+            MeetMonster();
         }
 
         // 移動 (x,z)
         Vector3 move = dir * speed * Time.deltaTime;
         controller.Move(move);
+    }
 
-        // 如果按了E
-        if (Input.GetKeyDown(KeyCode.E))
+
+    void PlayerRotate()
+    {
+        // 旋轉
+        float faceAngle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
+        player.transform.rotation = Quaternion.Euler(0, faceAngle, 0);
+        //Quaternion targetRotation = Quaternion.Euler(0, faceAngle, 0);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.3f);
+    }
+
+    void MeetMonster()
+    {
+        // 計時
+        time += Time.deltaTime;
+        float randomTime = Random.Range(randomMin, randomMax);
+        if (time > randomTime)
         {
-            // 如果在商店範圍
-            if (StoreBool == true)
-            {
-                e += 1;
-                int _e = e % 2;
-                switch (_e)
-                {
-                    // 關商店
-                    case 0:
-                        storeUI.SetActive(false);
-                        break;
-                    // 開商店
-                    case 1:
-                        storeUI.SetActive(true);
-                        break;
-                }
-            }
+            // 遇見怪物
+            SceneManager.LoadScene(Aide);
+            time = 0;
         }
     }
+
 
     //private void OnCollisionEnter(Collision collision)
     //{
@@ -92,11 +83,6 @@ public class PlayerControl : MonoBehaviour
             SceneManager.LoadScene(Place);
         }
 
-        // 如果進入商人的對話範圍
-        if (other.gameObject.tag == "Store")
-        {
-            StoreBool= true;
-        }
 
         //if (other.gameObject.tag=="PickUp")
         //{
@@ -148,11 +134,6 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // 如果離開商人的對話範圍
-        if (other.gameObject.tag == "Store")
-        {
-            StoreBool = false;
-        }
 
         //if (other.gameObject.tag == "PickUp")
         //{
