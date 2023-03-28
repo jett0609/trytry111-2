@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Information
 {
+    public static float[] x = new float[8];
+    public static float[] z = new float[8];
+
     public static int _hp = 265;
     public static int MaxHP = 265;
     public static int HP

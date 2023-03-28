@@ -16,7 +16,7 @@ namespace Scripts.Move.s01
         void Update()
         {
             // 如果按了Z
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z)|| Input.GetKeyDown(KeyCode.Return))
             {
                 // 如果在撿的範圍
                 if (PlayerBool == true)

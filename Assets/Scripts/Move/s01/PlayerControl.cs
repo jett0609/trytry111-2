@@ -7,6 +7,9 @@ public class PlayerControl : MonoBehaviour
 {
     public GameObject player;
     public GameObject storeUI;
+    public GameObject saveUI;
+    bool UI = false;
+    public static int SaveTime = 0;
     CharacterController controller;
     public float speed = 10;
     float time = 0;
@@ -22,8 +25,12 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
+        // 如果UI不作用
+        if (UI == false)
+        {
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+        }
 
         Vector3 dir = new Vector3(h, 0, v);
 
@@ -40,6 +47,9 @@ public class PlayerControl : MonoBehaviour
         // 移動 (x,z)
         Vector3 move = dir * speed * Time.deltaTime;
         controller.Move(move);
+
+        // 叫出UI (目前Save)
+        Save();
     }
 
 
@@ -62,6 +72,27 @@ public class PlayerControl : MonoBehaviour
             // 遇見怪物
             SceneManager.LoadScene(Aide);
             time = 0;
+        }
+    }
+
+    void Save()
+    {
+        // 應該要是清單的，暫且先當存檔
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // 記按的次數
+            SaveTime++;
+            
+            if (SaveTime%2==1)
+            {
+                saveUI.SetActive(true);
+                UI = true;
+            }
+            else
+            {
+                saveUI.SetActive(false);
+                UI = false;
+            }
         }
     }
 
