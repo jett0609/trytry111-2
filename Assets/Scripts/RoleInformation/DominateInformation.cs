@@ -7,6 +7,8 @@ namespace Scripts.RoleInformation
 {
     public class DominateInformation
     {
+        public static int NumberPlayer = 11;
+
         public static string name = "Dominate";
 
         public static int MaxHP = 265;

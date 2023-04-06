@@ -8,7 +8,8 @@ public class StoreControl : MonoBehaviour
     bool PlayerBool = false;
     public Text TextStore;
     public string[] stringStore;
-    int e1,e2;
+    int e1;
+    public int talkTime;
     public GameObject storeUI;
     void Start()
     {
@@ -23,6 +24,13 @@ public class StoreControl : MonoBehaviour
             // 開商店
             Store();
         }
+        // 如果按了Escape
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // 關商店
+            storeUI.SetActive(false);
+            StopCoroutine(StoreTalk());
+        }
     }
 
     void Store()
@@ -30,19 +38,21 @@ public class StoreControl : MonoBehaviour
         // 如果在商店範圍
         if (PlayerBool == true)
         {
-            e1++;
-            int _e = e1 % (stringStore.Length + 1);
-            if (_e == 0)
-            {
-                storeUI.SetActive(false);
-                e2 = 0;
-            }
-            else
-            {
-                storeUI.SetActive(true);
-                TalkStore();
-                e2++;
-            }
+            storeUI.SetActive(true);
+            StartCoroutine(StoreTalk());
+            //int _e = e1 % (stringStore.Length + 1);
+            //if (_e == 0)
+            //{
+            //    storeUI.SetActive(false);
+            //    e2 = 0;
+            //}
+            //else
+            //{
+            //    storeUI.SetActive(true);
+            //    TalkStore();
+            //    e2++;
+            //}
+
             //switch (_e)
             //{
             //    // 關商店
@@ -59,9 +69,15 @@ public class StoreControl : MonoBehaviour
         }
     }
 
-    void TalkStore()
+    IEnumerator StoreTalk()
     {
-        TextStore.text = stringStore[e2];
+        while (true)
+        {
+            e1 = Random.Range(0, stringStore.Length);
+            TextStore.text = stringStore[e1];
+
+            yield return new WaitForSeconds(talkTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,4 +95,10 @@ public class StoreControl : MonoBehaviour
             PlayerBool = false;
         }
     }
+
+    //void TalkStore()
+    //{
+    //    TextStore.text = stringStore[e2];
+    //}
+
 }

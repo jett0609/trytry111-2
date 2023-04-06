@@ -8,19 +8,19 @@ using UnityEngine.SceneManagement;
 public class TurnBasedCombatTalkControl : MonoBehaviour
 {
     public Text textTalk;
-    public Button buttonRun;
+    //public Button buttonRun;
     public string[] talkStart;
     //public string[] talk01;
     public string[] talkRun;
     public GameObject gameObjectTalk;
-    int Click01, Click02;
+    //int Click01, Click02;
     public string Scene;
     void Start()
     {
         StartCoroutine(IEStart());
-        Button btn_run = buttonRun.GetComponent<Button>();
+        //Button btn_run = buttonRun.GetComponent<Button>();
         //Button btn_01 = buttonTalk[1].GetComponent<Button>();
-        btn_run.onClick.AddListener(MouseDownOneTalkRun);
+        //btn_run.onClick.AddListener(MouseDownOneTalkRun);
     }
 
     IEnumerator IEStart()
@@ -28,25 +28,26 @@ public class TurnBasedCombatTalkControl : MonoBehaviour
         gameObjectTalk.SetActive(true);
         textTalk.text = talkStart[0];
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
-        gameObjectTalk.SetActive(false);
+        textTalk.text = "";
     }
 
     public void MouseDownOneTalkRun()
     {
-        Click01++;
-        int e;
-        e = Click01 % (talkRun.Length + 1);
+        //Click01++;
+        //int e;
+        //e = Click01 % (talkRun.Length + 1);
         StartCoroutine(LoadSceneMove());
 
         IEnumerator LoadSceneMove()
         {
             gameObjectTalk.SetActive(true);
-            textTalk.text = talkRun[Click02];
-            Click02++;
-
-            yield return new WaitForSeconds(1);
+            for (int i = 0; i < talkRun.Length; i++)
+            {
+                textTalk.text = talkRun[i];
+                yield return new WaitForSeconds(1.5f);
+            }
 
             SceneManager.LoadScene(Scene);
         }

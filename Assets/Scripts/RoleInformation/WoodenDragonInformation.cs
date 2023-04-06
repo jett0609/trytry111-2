@@ -7,6 +7,8 @@ namespace Scripts.RoleInformation
 {
     public class WoodenDragonInformation
     {
+        public static int NumberAite = 21;
+
         public static string name = "WoodenDragon";
 
         public static int MaxHP = 3620;

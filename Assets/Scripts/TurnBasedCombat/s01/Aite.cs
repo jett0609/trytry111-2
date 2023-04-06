@@ -1,18 +1,24 @@
+using Scripts.RoleInformation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Aite : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public string StringHP;
+    public Text TextHP; 
+    int MaxHP;
+    public static int HP;
     void Start()
     {
+        MaxHP = WoodenDragonInformation.MaxHP;
+        HP = WoodenDragonInformation.MaxHP;
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        TextHP.text = StringHP + HP;
     }
 }
