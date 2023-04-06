@@ -7,7 +7,7 @@ namespace Scripts.RoleInformation
 {
     public class WoodenDragonInformation
     {
-        public static int NumberAite = 21;
+        public static int NumberAite = 11;
 
         public static string name = "WoodenDragon";
 

@@ -32,7 +32,7 @@ public class OverallControl : MonoBehaviour
     public static int[] All;
     //public static int[] AllHP;
     public static int[] AllSpeed;
-    public static int intRound;
+    public static int intRound = 1;
     //public string[] talk;
 
 
@@ -117,7 +117,7 @@ public class OverallControl : MonoBehaviour
             yield return ButtonControl.buttonUsing == false;
 
             // 如果是玩家動作
-            if (Mathf.Floor(All[i] / 10) == 1)
+            if (Mathf.Floor(All[i] / 10) == 0)
             {
 
             }
@@ -128,6 +128,7 @@ public class OverallControl : MonoBehaviour
 
             }
         }
+        intRound++;
     }
 
     //void OverallControlStart()

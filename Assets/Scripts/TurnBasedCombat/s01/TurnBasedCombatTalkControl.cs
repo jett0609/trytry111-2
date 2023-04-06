@@ -15,6 +15,8 @@ public class TurnBasedCombatTalkControl : MonoBehaviour
     public GameObject gameObjectTalk;
     //int Click01, Click02;
     public string Scene;
+    public Text textRound;
+
     void Start()
     {
         StartCoroutine(IEStart());
@@ -28,7 +30,7 @@ public class TurnBasedCombatTalkControl : MonoBehaviour
         gameObjectTalk.SetActive(true);
         textTalk.text = talkStart[0];
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         textTalk.text = "";
     }
@@ -55,7 +57,7 @@ public class TurnBasedCombatTalkControl : MonoBehaviour
 
     void Update()
     {
-        
+        textRound.text = "²Ä" + OverallControl.intRound + "¦^¦X";
     }
 
     //public void MouseDownOne()
