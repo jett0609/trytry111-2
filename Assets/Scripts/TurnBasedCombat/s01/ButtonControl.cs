@@ -21,6 +21,8 @@ namespace Scripts.TurnBasedCombat.s01
         public string[] aTalk;
         //public Button yourButton;
         //int Click01, Click02, player, aite, Damage;
+        public GameObject Button1, Button2, Button3, Button4, Button5;
+        public Sprite AttackOn, AttackOff,SkillOn,SkillOff,ItemOn,ItemOff,EquipOn,EquipOff,FleeOn,FleeOff;
 
         void Start()
         {
@@ -34,12 +36,19 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 buttonUsing = true;
 
+                Image sp = Button1.gameObject.GetComponent<Image>();
+                sp.sprite = AttackOff;
+
+                int damage = DominateInformation.ATK - WoodenDragonInformation.DEF;
+
                 aTalk = new string[3];
                 aTalk[0] = "使用了攻擊。";
-                aTalk[1] = "造成了傷害。";
+                aTalk[1] = "造成了" + damage + "傷害。";
 
+                Aite.HP -= damage;
 
                 MouseDownTwo();
+                sp.sprite = AttackOn;
                 OverallControl.intRound++;
             }
         }
