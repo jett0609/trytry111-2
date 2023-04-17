@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InstantiateControl : MonoBehaviour
 {
-    int player = DominateInformation.NumberPlayer;
+    int player = DominateControl.NumberPlayer;
     int r = 11;
     //int r1 = Random.Range(21, 29);
     //int r2 = Random.Range(21, 29);

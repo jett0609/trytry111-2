@@ -25,13 +25,13 @@ public class OverallControl : MonoBehaviour
     int a;
     public static int[] Player = new int[3];
     //public static int[] PlayerHP;
-    public static int[] PlayerSpeed;
+    public static int[] PlayerSpeed = new int[3];
     public static int[] Aite = new int[3];
     //public static int[] AiteHP;
-    public static int[] AiteSpeed;
-    public static int[] All;
+    public static int[] AiteSpeed = new int[3];
+    public static int[] All = new int[6];
     //public static int[] AllHP;
-    public static int[] AllSpeed;
+    public static int[] AllSpeed = new int[6];
     public static int intRound = 1;
     //public string[] talk;
 
@@ -58,17 +58,17 @@ public class OverallControl : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         //輸入數值
-        Player[0] = DominateInformation.NumberPlayer;
-        PlayerSpeed[0] = DominateInformation.Speed;
-        Aite[0] = WoodenDragonInformation.NumberAite;
-        AiteSpeed[0] = WoodenDragonInformation.Speed;
+        Player[0] = DominateControl.NumberPlayer;
+        PlayerSpeed[0] = DominateControl.Speed;
+        Aite[0] = WoodenDragonControl.NumberAite;
+        AiteSpeed[0] = WoodenDragonControl.Speed;
         All[0] = Player[0];
         AllSpeed[0] = PlayerSpeed[0];
         All[1] = Aite[0];
         AllSpeed[1] = AiteSpeed[0];
 
         // 排列數值 (照速度降冪)
-        for (int i = 0; i < Player.Length; i++)
+        for (int i = 0; i < Player.Length - 1; i++)
         {
             if (PlayerSpeed[i] < PlayerSpeed[i + 1])
             {
@@ -80,7 +80,7 @@ public class OverallControl : MonoBehaviour
                 PlayerSpeed[i] = b;
             }
         }
-        for (int k = 0; k < Aite.Length; k++)
+        for (int k = 0; k < Aite.Length - 1; k++)
         {
             if (AiteSpeed[k] < AiteSpeed[k + 1])
             {
@@ -92,7 +92,7 @@ public class OverallControl : MonoBehaviour
                 AiteSpeed[k] = b;
             }
         }
-        for (int i = 0; i < All.Length; i++)
+        for (int i = 0; i < All.Length - 1; i++)
         {
             if (AllSpeed[i] < AllSpeed[i + 1])
             {

@@ -15,14 +15,14 @@ namespace Scripts.TurnBasedCombat.s01
     {
         public static bool buttonUsing = false;
         //public GameObject button;
-        public GameObject talk;
+        //public GameObject talk;
         //public Button buttonTalk;
-        public Text textTalk;
-        public string[] aTalk;
+        //public Text textTalk;
+        //public string[] aTalk;
         //public Button yourButton;
         //int Click01, Click02, player, aite, Damage;
-        public GameObject Button1, Button2, Button3, Button4, Button5;
-        public Sprite AttackOn, AttackOff,SkillOn,SkillOff,ItemOn,ItemOff,EquipOn,EquipOff,FleeOn,FleeOff;
+        public GameObject Button1On, Button1Off, Button2On, Button2Off, Button3On, Button3Off, Button4On, Button4Off, Button5On, Button5Off;
+        //public Sprite AttackOn, AttackOff,SkillOn,SkillOff,ItemOn,ItemOff,EquipOn,EquipOff,FleeOn,FleeOff;
 
         void Start()
         {
@@ -36,19 +36,18 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 buttonUsing = true;
 
-                Image sp = Button1.gameObject.GetComponent<Image>();
-                sp.sprite = AttackOff;
+                Button1Off.SetActive(true);
 
-                int damage = DominateInformation.ATK - WoodenDragonInformation.DEF;
+                int damage = DominateControl.ATK - WoodenDragonControl.DEF;
 
-                aTalk = new string[3];
-                aTalk[0] = "使用了攻擊。";
-                aTalk[1] = "造成了" + damage + "傷害。";
+                //aTalk = new string[3];
+                //aTalk[0] = "使用了攻擊。";
+                //aTalk[1] = "造成了" + damage + "傷害。";
 
-                Aite.HP -= damage;
+                WoodenDragonControl.HP -= damage;
 
                 MouseDownTwo();
-                sp.sprite = AttackOn;
+                Button1Off.SetActive(false);
                 OverallControl.intRound++;
             }
         }
@@ -59,8 +58,8 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 buttonUsing = true;
 
-                aTalk = new string[2];
-                aTalk[0] = "使用了技能。";
+                //aTalk = new string[2];
+                //aTalk[0] = "使用了技能。";
 
 
 
@@ -75,9 +74,8 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 buttonUsing = true;
 
-                aTalk = new string[2];
-                aTalk[0] = "使用了道具。";
-
+                //aTalk = new string[2];
+                //aTalk[0] = "使用了道具。";
 
 
                 MouseDownTwo();
@@ -90,8 +88,8 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 buttonUsing = true;
 
-                aTalk = new string[2];
-                aTalk[0] = "使用了裝備。";
+                //aTalk = new string[2];
+                //aTalk[0] = "使用了裝備。";
 
 
 
@@ -124,12 +122,12 @@ namespace Scripts.TurnBasedCombat.s01
             {
                 //talk.SetActive(true);
 
-                for (int i = 0; i < aTalk.Length; i++)
-                {
-                    textTalk.text = aTalk[i];
-                    yield return new WaitForSeconds(1.5f);
-                }
-
+                //for (int i = 0; i < aTalk.Length; i++)
+                //{
+                //    textTalk.text = aTalk[i];
+                //    yield return new WaitForSeconds(1.5f);
+                //}
+                yield return new WaitForSeconds(1.5f);
                 buttonUsing = false;
             }
 
