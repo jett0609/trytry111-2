@@ -152,4 +152,15 @@ public class GameMenuControl : MonoBehaviour
         gameObjectSave.SetActive(false);
         gameObjectSetUp.SetActive(true);
     }
+
+    public void Back()
+    {
+        gameObjectItem.gameObject.SetActive(false);
+        gameObjectSkill.gameObject.SetActive(false);
+        gameObjectEquip.gameObject.SetActive(false);
+        gameObjectStateOfCharacter.gameObject.SetActive(false);
+        gameObjectTip.gameObject.SetActive(false);
+        gameObjectSave.SetActive(false);
+        gameObjectSetUp.SetActive(false);
+    }
 }
