@@ -19,15 +19,17 @@ public class StoreControl : MonoBehaviour
     void Update()
     {
         // 如果按了E
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && PlayerControl.UI == false)
         {
             // 開商店
             Store();
+            PlayerControl.boolStoreUI = true;
         }
         // 如果按了Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 關商店
+            PlayerControl.boolStoreUI = false;
             storeUI.SetActive(false);
             StopCoroutine(StoreTalk());
         }

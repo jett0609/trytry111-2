@@ -7,6 +7,7 @@ public class InstantiateControl : MonoBehaviour
 {
     int player = DominateControl.NumberPlayer;
     int r = 11;
+    int[] x, y;
     //int r1 = Random.Range(21, 29);
     //int r2 = Random.Range(21, 29);
     //int r3 = Random.Range(21, 29);

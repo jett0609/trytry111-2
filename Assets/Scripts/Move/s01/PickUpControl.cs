@@ -22,7 +22,7 @@ namespace Scripts.Move.s01
                 if (PlayerBool == true)
                 {
                     // A+1且物品消失
-                    PropsInformation.A += 1;
+                    PropsInformation.intA += 1;
                     gameObject.SetActive(false);
                 }
             }
