@@ -6,7 +6,7 @@ public class PropsInformation
 {
     //private int _a = 0;
     //public int MaxA = 100;
-    public static string stringA;
+    public static string stringA = "¹D¨ã01 : \t";
     public static int intA;
     //{
     //    get

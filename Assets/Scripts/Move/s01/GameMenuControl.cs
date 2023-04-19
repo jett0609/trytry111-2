@@ -62,13 +62,7 @@ public class GameMenuControl : MonoBehaviour
             }
             else
             {
-                gameObjectItem.gameObject.SetActive(false);
-                gameObjectSkill.gameObject.SetActive(false);
-                gameObjectEquip.gameObject.SetActive(false);
-                gameObjectStateOfCharacter.gameObject.SetActive(false);
-                gameObjectTip.gameObject.SetActive(false);
-                gameObjectSave.SetActive(false);
-                gameObjectSetUp.SetActive(false);
+                Back();
 
                 GameMenuUI.SetActive(false);
                 PlayerControl.UI = false;
@@ -78,12 +72,7 @@ public class GameMenuControl : MonoBehaviour
 
     public void Item()
     {
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectEquip.gameObject.SetActive(false);
-        gameObjectStateOfCharacter.gameObject.SetActive(false);
-        gameObjectTip.gameObject.SetActive(false);
-        gameObjectSave.SetActive(false);
-        gameObjectSetUp.SetActive(false);
+        Back();
         gameObjectItem.gameObject.SetActive(true);
     }
 
@@ -100,56 +89,31 @@ public class GameMenuControl : MonoBehaviour
 
     public void Equip()
     {
-        gameObjectItem.gameObject.SetActive(false);
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectStateOfCharacter.gameObject.SetActive(false);
-        gameObjectTip.gameObject.SetActive(false);
-        gameObjectSave.SetActive(false);
-        gameObjectSetUp.SetActive(false);
+        Back();
         gameObjectEquip.gameObject.SetActive(true);
     }
 
     public void StateOfCharacter()
     {
-        gameObjectItem.gameObject.SetActive(false);
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectEquip.gameObject.SetActive(false);
-        gameObjectTip.gameObject.SetActive(false);
-        gameObjectSave.SetActive(false);
-        gameObjectSetUp.SetActive(false);
+        Back();
         gameObjectStateOfCharacter.gameObject.SetActive(true);
     }
 
     public void Tip()
     {
-        gameObjectItem.gameObject.SetActive(false);
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectEquip.gameObject.SetActive(false);
-        gameObjectStateOfCharacter.gameObject.SetActive(false);
-        gameObjectSave.SetActive(false);
-        gameObjectSetUp.SetActive(false);
+        Back();
         gameObjectTip.gameObject.SetActive(true);
     }
 
     public void Save()
     {
-        gameObjectItem.gameObject.SetActive(false);
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectEquip.gameObject.SetActive(false);
-        gameObjectStateOfCharacter.gameObject.SetActive(false);
-        gameObjectTip.gameObject.SetActive(false);
-        gameObjectSetUp.SetActive(false);
+        Back();
         gameObjectSave.SetActive(true);
     }
 
     public void SetUp()
     {
-        gameObjectItem.gameObject.SetActive(false);
-        gameObjectSkill.gameObject.SetActive(false);
-        gameObjectEquip.gameObject.SetActive(false);
-        gameObjectStateOfCharacter.gameObject.SetActive(false);
-        gameObjectTip.gameObject.SetActive(false);
-        gameObjectSave.SetActive(false);
+        Back();
         gameObjectSetUp.SetActive(true);
     }
 
