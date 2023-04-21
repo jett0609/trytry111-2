@@ -23,11 +23,20 @@ namespace Scripts.TurnBasedCombat.s01
         //int Click01, Click02, player, aite, Damage;
         public GameObject Button1On, Button1Off, Button2On, Button2Off, Button3On, Button3Off, Button4On, Button4Off, Button5On, Button5Off;
         //public Sprite AttackOn, AttackOff,SkillOn,SkillOff,ItemOn,ItemOff,EquipOn,EquipOff,FleeOn,FleeOff;
+        public GameObject GameObjectDamage;
+        public string Scene;
+        public Text textRound;
+        public static int damage;
 
         void Start()
         {
             //Button btn = yourButton.GetComponent<Button>();
             //btn.onClick.AddListener(MouseDownOne);
+        }
+
+        void Update()
+        {
+            textRound.text = "第" + OverallControl.intRound + "回合";
         }
 
         public void Attack()
@@ -38,13 +47,14 @@ namespace Scripts.TurnBasedCombat.s01
 
                 Button1Off.SetActive(true);
 
-                int damage = DominateControl.ATK - WoodenDragonControl.DEF;
+                damage = DominateControl.ATK - WoodenDragonControl.DEF;
 
                 //aTalk = new string[3];
                 //aTalk[0] = "使用了攻擊。";
                 //aTalk[1] = "造成了" + damage + "傷害。";
 
                 WoodenDragonControl.HP -= damage;
+                Instantiate(GameObjectDamage);
 
                 MouseDownTwo();
                 Button1Off.SetActive(false);
@@ -97,6 +107,25 @@ namespace Scripts.TurnBasedCombat.s01
             }
         }
 
+        public void MouseDownOneTalkRun()
+        {
+            //Click01++;
+            //int e;
+            //e = Click01 % (talkRun.Length + 1);
+            StartCoroutine(LoadSceneMove());
+
+            IEnumerator LoadSceneMove()
+            {
+                //gameObjectTalk.SetActive(true);
+                //for (int i = 0; i < talkRun.Length; i++)
+                //{
+                //textTalk.text = talkRun[i];
+                yield return new WaitForSeconds(1.5f);
+                //}
+
+                SceneManager.LoadScene(Scene);
+            }
+        }
 
         //public void MouseDownOne()
         //{

@@ -7,45 +7,26 @@ using UnityEngine;
 
 public class OverallControl : MonoBehaviour
 {
-    //public static bool _buttonUsing = false;
-    //public static bool buttonUsing
-    //{
-    //    get
-    //    {
-    //        return _buttonUsing;
-    //    }
-    //    set
-    //    {
-    //        value = buttonUsing;
-    //        _buttonUsing = value;
-    //    }
-    //}
-
-    int b;
-    int a;
-    public static int[] Player = new int[3];
-    //public static int[] PlayerHP;
-    public static int[] PlayerSpeed = new int[3];
-    public static int[] Aite = new int[3];
-    //public static int[] AiteHP;
-    public static int[] AiteSpeed = new int[3];
-    public static int[] All = new int[6];
-    //public static int[] AllHP;
-    public static int[] AllSpeed = new int[6];
+    int whosTurn = 1;
+    public static int[] Player1;
+    public static int[] Player2;
+    public static int[] Player3;
+    public static int[] Player4;
+    public static int[] Player5;
+    public static int[] Player6;
+    public static int[] Player7;
+    public static int[] Player8;
+    int[] A;
     public static int intRound = 1;
-    //public string[] talk;
-
-
+    public GameObject allButton;
+    public GameObject[] Icon;
+    public GameObject[] Icon2;
+    public Vector3 m_Icon2Place1 = new Vector3(1016, -900, 0), m_Icon2Place2 = new Vector3(1256, -900, 0), m_Icon2Place3 = new Vector3(1496, -900, 0), m_Icon2Place4 = new Vector3(1736, -900, 0), m_Icon2Place5 = new Vector3(-500, 900, 0);
 
     void Start()
     {
         StartCoroutine(Overall());
-        //OverallControlStart();
-
-        //Player[0] = DominateInformation.name;
-        //PlayerHP[0] = DominateInformation.MaxHP;
-        //Aite[0] = WoodenDragonInformation.name;
-        //AiteHP[0] = WoodenDragonInformation.MaxHP;
+        allButton.SetActive(false);
     }
 
     void Update()
@@ -55,55 +36,73 @@ public class OverallControl : MonoBehaviour
 
     IEnumerator Overall()
     {
+        // 生成順序與位置
+        Player1[0] = 1;
+        Player2[0] = 2;
+        Player3[0] = 3;
+        Player4[0] = 4;
+        Player5[0] = 5;
+        Player6[0] = 6;
+        Player7[0] = 7;
+        Player8[0] = 8;
+
         yield return new WaitForSeconds(1);
 
-        //輸入數值
-        Player[0] = DominateControl.NumberPlayer;
-        PlayerSpeed[0] = DominateControl.Speed;
-        Aite[0] = WoodenDragonControl.NumberAite;
-        AiteSpeed[0] = WoodenDragonControl.Speed;
-        All[0] = Player[0];
-        AllSpeed[0] = PlayerSpeed[0];
-        All[1] = Aite[0];
-        AllSpeed[1] = AiteSpeed[0];
-
         // 排列數值 (照速度降冪)
-        for (int i = 0; i < Player.Length - 1; i++)
+        if (Player1[2] < Player2[2])
         {
-            if (PlayerSpeed[i] < PlayerSpeed[i + 1])
-            {
-                a = Player[i + 1];
-                Player[i + 1] = Player[i];
-                Player[i] = a;
-                b = PlayerSpeed[i + 1];
-                PlayerSpeed[i + 1] = PlayerSpeed[i];
-                PlayerSpeed[i] = b;
-            }
+            A = Player1;
+            Player1 = Player2;
+            Player2 = Player1;
         }
-        for (int k = 0; k < Aite.Length - 1; k++)
+        if (Player2[2] < Player3[2])
         {
-            if (AiteSpeed[k] < AiteSpeed[k + 1])
-            {
-                a = Aite[k + 1];
-                Aite[k + 1] = Aite[k];
-                Aite[k] = a;
-                b = AiteSpeed[k + 1];
-                AiteSpeed[k + 1] = AiteSpeed[k];
-                AiteSpeed[k] = b;
-            }
+            A = Player2;
+            Player2 = Player3;
+            Player3 = Player2;
         }
-        for (int i = 0; i < All.Length - 1; i++)
+        if (Player3[2] < Player4[2])
         {
-            if (AllSpeed[i] < AllSpeed[i + 1])
-            {
-                a = All[i + 1];
-                All[i + 1] = All[i];
-                All[i] = a;
-                b = AllSpeed[i + 1];
-                AllSpeed[i + 1] = AllSpeed[i];
-                AllSpeed[i] = b;
-            }
+            A = Player3;
+            Player3 = Player4;
+            Player4 = Player3;
         }
+        if (Player4[2] < Player5[2])
+        {
+            A = Player4;
+            Player4 = Player5;
+            Player5 = Player4;
+        }
+        if (Player5[2] < Player6[2])
+        {
+            A = Player5;
+            Player5 = Player6;
+            Player6 = Player5;
+        }
+        if (Player6[2] < Player7[2])
+        {
+            A = Player6;
+            Player6 = Player7;
+            Player7 = Player6;
+        }
+        if (Player7[2] < Player8[2])
+        {
+            A = Player7;
+            Player7 = Player8;
+            Player8 = Player7;
+        }
+
+        // 生成順序Icon
+        Icon[0] = Instantiate(Icon2[Player1[1]], m_Icon2Place1, transform.rotation);
+        Icon[1] = Instantiate(Icon2[Player2[1]], m_Icon2Place2, transform.rotation);
+        Icon[2] = Instantiate(Icon2[Player3[1]], m_Icon2Place3, transform.rotation);
+        Icon[3] = Instantiate(Icon2[Player4[1]], m_Icon2Place4, transform.rotation);
+        Icon[4] = Instantiate(Icon2[Player5[1]], m_Icon2Place5, transform.rotation);
+        Icon[5] = Instantiate(Icon2[Player6[1]], m_Icon2Place5, transform.rotation);
+        Icon[6] = Instantiate(Icon2[Player7[1]], m_Icon2Place5, transform.rotation);
+        Icon[7] = Instantiate(Icon2[Player8[1]], m_Icon2Place5, transform.rotation);
+
+        allButton.SetActive(true);
     }
 
     // 一回合
@@ -111,98 +110,131 @@ public class OverallControl : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        for (int i = 0;i < All.Length;i++)
+        whosTurn = 1;
+
+        for (int i = 0; i < 8; i++)
         {
             // 等字跑完
             yield return ButtonControl.buttonUsing == false;
 
-            // 如果是玩家動作
-            if (Mathf.Floor(All[i] / 10) == 0)
+            // 排順序
+            Icon[i].transform.position = m_Icon2Place1;
+            Icon[(i + 1) % 8].transform.position = m_Icon2Place2;
+            Icon[(i + 2) % 8].transform.position = m_Icon2Place3;
+            Icon[(i + 3) % 8].transform.position = m_Icon2Place4;
+            Icon[(i - 1 + 8) % 8].transform.position = m_Icon2Place5;
+
+            switch (whosTurn)
             {
+                case 1:
+                    // 如果是玩家動作
+                    if (Player1[0] < 5)
+                    {
+                        allButton.SetActive(true);
 
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    // 如果是電腦動作
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                case 2:
+                    if (Player2[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                case 3:
+                    if (Player3[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                 case 4:
+                    if (Player4[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                 case 5:
+                    if (Player5[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                 case 6:
+                    if (Player6[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                 case 7:
+                    if (Player7[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
+
+                 case 8:
+                    if (Player8[0] < 5)
+                    {
+                        allButton.SetActive(true);
+
+                        yield return ButtonControl.buttonUsing == true;
+                    }
+                    else
+                    {
+                        allButton.SetActive(false);
+                    }
+                    break;
             }
-
-            // 如果是電腦動作
-            if (Mathf.Floor(All[i] / 10) != 1)
-            {
-
-            }
+            
+            whosTurn++;
         }
         intRound++;
     }
-
-    //void OverallControlStart()
-    //{
-    //    // 輸入數值
-    //    Player[0] = DominateInformation.name;
-    //    PlayerHP[0] = DominateInformation.MaxHP;
-    //    PlayerSpeed[0] = DominateInformation.Speed;
-    //    Aite[0] = WoodenDragonInformation.name;
-    //    AiteHP[0] = WoodenDragonInformation.MaxHP;
-    //    AiteSpeed[0] = WoodenDragonInformation.Speed;
-    //    All[0] = Player[0];
-    //    AllHP[0] = PlayerHP[0];
-    //    AllSpeed[0] = PlayerSpeed[0];
-    //    All[1] = Aite[0];
-    //    AllHP[1] = AiteHP[0];
-    //    AllSpeed[1] = AiteSpeed[0];
-
-    //    // 排列數值 (照速度降冪)
-    //    for (int i = 0; i < Player.Length; i++)
-    //    {
-    //        if (PlayerSpeed[i] < PlayerSpeed[i + 1])
-    //        {
-    //            a = Player[i + 1];
-    //            Player[i + 1] = Player[i];
-    //            Player[i] = a;
-    //            b = PlayerHP[i + 1];
-    //            PlayerHP[i + 1] = PlayerHP[i];
-    //            PlayerHP[i] = b;
-    //            b = PlayerSpeed[i + 1];
-    //            PlayerSpeed[i + 1] = PlayerSpeed[i];
-    //            PlayerSpeed[i] = b;
-    //        }
-    //    }
-    //    for (int k = 0; k < Aite.Length; k++)
-    //    {
-    //        if (AiteSpeed[k] < AiteSpeed[k + 1])
-    //        {
-    //            a = Aite[k + 1];
-    //            Aite[k + 1] = Aite[k];
-    //            Aite[k] = a;
-    //            b = AiteHP[k + 1];
-    //            AiteHP[k + 1] = AiteHP[k];
-    //            AiteHP[k] = b;
-    //            b = AiteSpeed[k + 1];
-    //            AiteSpeed[k + 1] = AiteSpeed[k];
-    //            AiteSpeed[k] = b;
-    //        }
-    //    }
-    //    for (int i = 0; i < All.Length; i++)
-    //    {
-    //        if (AllSpeed[i] < AllSpeed[i + 1])
-    //        {
-    //            a = All[i + 1];
-    //            All[i + 1] = All[i];
-    //            All[i] = a;
-    //            b = AllHP[i + 1];
-    //            AllHP[i + 1] = AllHP[i];
-    //            AllHP[i] = b;
-    //            b = AllSpeed[i + 1];
-    //            AllSpeed[i + 1] = AllSpeed[i];
-    //            AllSpeed[i] = b;
-    //        }
-    //    }
-    //}
-
-    //public void PlayerDominate(string name, int HP)
-    //{
-    //    name = "Dominate";
-    //    //ATK = DominateInformation.ATK;
-    //    //DEF = DominateInformation.DEF;
-    //    //MaxHP = DominateInformation.MaxHP;
-    //    //MaxMP = DominateInformation.MaxMP;
-    //    //speed = DominateInformation.Speed;
-    //    HP = 0;
-    //}
 }

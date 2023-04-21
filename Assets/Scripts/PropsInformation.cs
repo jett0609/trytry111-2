@@ -8,6 +8,8 @@ public class PropsInformation
     //public int MaxA = 100;
     public static string stringA = "道具01 : \t";
     public static int intA;
+    public static string stringB = "道具02 : \t";
+    public static int intB;
     //{
     //    get
     //    {

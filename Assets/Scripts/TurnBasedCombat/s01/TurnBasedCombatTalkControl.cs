@@ -7,81 +7,81 @@ using UnityEngine.SceneManagement;
 
 public class TurnBasedCombatTalkControl : MonoBehaviour
 {
-    //public Text textTalk;
-    //public Button buttonRun;
-    //public string[] talkStart;
-    //public string[] talk01;
-    //public string[] talkRun;
-    //public GameObject gameObjectTalk;
-    //int Click01, Click02;
-    public string Scene;
-    public Text textRound;
+    ////public Text textTalk;
+    ////public Button buttonRun;
+    ////public string[] talkStart;
+    ////public string[] talk01;
+    ////public string[] talkRun;
+    ////public GameObject gameObjectTalk;
+    ////int Click01, Click02;
+    //public string Scene;
+    //public Text textRound;
 
-    void Start()
-    {
-        //StartCoroutine(IEStart());
-        //Button btn_run = buttonRun.GetComponent<Button>();
-        //Button btn_01 = buttonTalk[1].GetComponent<Button>();
-        //btn_run.onClick.AddListener(MouseDownOneTalkRun);
-    }
-
-    //IEnumerator IEStart()
+    //void Start()
     //{
-    //    gameObjectTalk.SetActive(true);
-    //    textTalk.text = talkStart[0];
-
-    //    yield return new WaitForSeconds(1f);
-
-    //    textTalk.text = "";
+    //    //StartCoroutine(IEStart());
+    //    //Button btn_run = buttonRun.GetComponent<Button>();
+    //    //Button btn_01 = buttonTalk[1].GetComponent<Button>();
+    //    //btn_run.onClick.AddListener(MouseDownOneTalkRun);
     //}
 
-    public void MouseDownOneTalkRun()
-    {
-        //Click01++;
-        //int e;
-        //e = Click01 % (talkRun.Length + 1);
-        StartCoroutine(LoadSceneMove());
+    ////IEnumerator IEStart()
+    ////{
+    ////    gameObjectTalk.SetActive(true);
+    ////    textTalk.text = talkStart[0];
 
-        IEnumerator LoadSceneMove()
-        {
-            //gameObjectTalk.SetActive(true);
-            //for (int i = 0; i < talkRun.Length; i++)
-            //{
-                //textTalk.text = talkRun[i];
-                yield return new WaitForSeconds(1.5f);
-            //}
+    ////    yield return new WaitForSeconds(1f);
 
-            SceneManager.LoadScene(Scene);
-        }
-    }
+    ////    textTalk.text = "";
+    ////}
 
-    void Update()
-    {
-        textRound.text = "第" + OverallControl.intRound + "回合";
-    }
-
-    //public void MouseDownOne()
+    //public void MouseDownOneTalkRun()
     //{
-    //    Button btn_talk = buttonTalk[0].GetComponent<Button>();
-    //    btn_talk.onClick.AddListener();
-    //}
+    //    //Click01++;
+    //    //int e;
+    //    //e = Click01 % (talkRun.Length + 1);
+    //    StartCoroutine(LoadSceneMove());
 
-    //public void MouseDownOneTalk00()
-    //{
-    //    Click01++;
-    //    int e;
-    //    e = Click01 % (talkStart.Length + 1);
-    //    if (e == 0)
+    //    IEnumerator LoadSceneMove()
     //    {
-    //        gameObjectTalk.SetActive(false);
-    //        Click02 = 0;
-    //        Click01 = 0;
-    //    }
-    //    else
-    //    {
-    //        gameObjectTalk.SetActive(true);
-    //        textTalk.text = talkStart[Click02];
-    //        Click02++;
+    //        //gameObjectTalk.SetActive(true);
+    //        //for (int i = 0; i < talkRun.Length; i++)
+    //        //{
+    //            //textTalk.text = talkRun[i];
+    //            yield return new WaitForSeconds(1.5f);
+    //        //}
+
+    //        SceneManager.LoadScene(Scene);
     //    }
     //}
+
+    //void Update()
+    //{
+    //    textRound.text = "第" + OverallControl.intRound + "回合";
+    //}
+
+    ////public void MouseDownOne()
+    ////{
+    ////    Button btn_talk = buttonTalk[0].GetComponent<Button>();
+    ////    btn_talk.onClick.AddListener();
+    ////}
+
+    ////public void MouseDownOneTalk00()
+    ////{
+    ////    Click01++;
+    ////    int e;
+    ////    e = Click01 % (talkStart.Length + 1);
+    ////    if (e == 0)
+    ////    {
+    ////        gameObjectTalk.SetActive(false);
+    ////        Click02 = 0;
+    ////        Click01 = 0;
+    ////    }
+    ////    else
+    ////    {
+    ////        gameObjectTalk.SetActive(true);
+    ////        textTalk.text = talkStart[Click02];
+    ////        Click02++;
+    ////    }
+    ////}
 }

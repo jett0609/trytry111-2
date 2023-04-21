@@ -8,6 +8,7 @@ TagManager:
   - Place
   - Store
   - PickUp
+  - Icon
   layers:
   - Default
   - TransparentFX
